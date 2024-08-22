@@ -133,6 +133,8 @@ export default {
         nickMy: this.form1.nickMy,
         email: this.form1.email
       });
+       // Muestra el alert después de enviar los datos
+    alert("Datos personales enviados correctamente!");
 
       // Limpia el formulario 1 después de enviar
       this.form1.nombre = '';
@@ -145,6 +147,8 @@ export default {
         nombre: this.form2.nombre,
         mensaje: this.form2.mensaje
       });
+       // Muestra el alert después de enviar los datos
+    alert("Anime favorito enviado correctamente!");
 
       // Limpia el formulario 2 después de enviar
       this.form2.nombre = '';
@@ -200,10 +204,11 @@ export default {
   justify-content: center;
   gap: 20px;
   margin-bottom: 40px;
+  color: white;
 }
 
 #wrapper > div {
-  border: dashed black 1px;
+  border: inset black 1px;
   flex-basis: 120px;
   margin: 10px;
   padding: 10px;
@@ -223,15 +228,16 @@ export default {
 
 /* Estilos para los formularios */
 .card {
-  background-color: rgb(143, 216, 136);
+  background-color: rgb(32, 121, 6);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(224, 8, 8, 0.1);
   padding: 20px;
   width: 100%;
 }
 
 .card h2 {
   margin-top: 0;
+  color: white;
 }
 
 .card form {
@@ -242,18 +248,19 @@ export default {
 .card label {
   margin-bottom: 5px;
   font-weight: bold;
+  color: white;
 }
 
 .card input,
 .card textarea {
   margin-bottom: 15px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 4px;
 }
 
 .card input[type="submit"] {
-  background-color: #4CAF50;
+  background-color: #1d4b38;
   color: white;
   border: none;
   cursor: pointer;
@@ -261,7 +268,7 @@ export default {
 }
 
 .card input[type="submit"]:hover {
-  background-color: #059ef7;
+  background-color: #0552f7;
 }
 
 /* Estilos para la tabla */
@@ -281,24 +288,24 @@ export default {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid #4CAF50; /* Borde alrededor de la tabla */
+  border: 2px solid #000000; /* Borde alrededor de la tabla */
 }
 
 th, td {
   padding: 10px;
   text-align: left;
-  border: 1px solid #4CAF50; /* Bordes de las celdas */
+  border: 1px solid #000000; /* Bordes de las celdas */
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #13681a;
   color: white;
 }
 
 .image-container {
   position: relative;
-  width: 120px; /* Tamaño igual al del producto-item */
-  height: 120px; /* Tamaño igual al del producto-item */
+  width: 150px; /* Tamaño igual al del producto-item */
+  height: 150px; /* Tamaño igual al del producto-item */
   margin-bottom: 10px; /* Espacio entre la imagen y el primer producto-item */
 }
 
@@ -331,6 +338,7 @@ Formulario de Anime Favorito: Permite al usuario ingresar el nombre de su anime 
 Tablas:
 Tabla de Datos Personales: Muestra la información enviada desde el formulario de datos personales.
 Tabla de Anime Favorito: Muestra los animes favoritos enviados por el usuario.
+
 2. Script (Parte de la lógica):
 data: Define el estado del componente, incluyendo los modelos para almacenar los datos de los formularios (form1 y form2) y las listas para almacenar los datos enviados (submittedData1 y submittedData2).
 
