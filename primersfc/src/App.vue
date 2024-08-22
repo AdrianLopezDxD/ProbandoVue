@@ -3,7 +3,6 @@
     <h1>Mundo Anime</h1>
     <p>A tu favorito ponle una medalla</p>
     <div id="wrapper">
-
       <div class="image-container">
         <img src="./assets/monogatari-series-koyomi-araragi-image-anime-deviantart-anime.jpg" alt="" class="image-overlay">
       </div>
@@ -13,7 +12,7 @@
         producto-desc="Koyomi Araragi"
         v-bind:is-favorite="false"/>
 
-        <div class="image-container">
+      <div class="image-container">
         <img src="./assets/8d8f87bc8a3c6131d1e42d05a70c58f8.jpg" alt="" class="image-overlay">
       </div>
 
@@ -22,7 +21,7 @@
         producto-desc="Shoyo Hinata"
         v-bind:is-favorite="false"/>
 
-        <div class="image-container">
+      <div class="image-container">
         <img src="./assets/kirito-sword-art-online-30364-1920x1080.jpg" alt="" class="image-overlay">
       </div>
 
@@ -31,8 +30,8 @@
         producto-desc="Kirigaya Kazuto"
         v-bind:is-favorite="false"/>
     </div>
-    
-    <div class="container">
+
+    <div class="forms-tables-container">
       <!-- Formulario de Datos Personales -->
       <div class="card">
         <h2>Datos Personales</h2>
@@ -50,10 +49,22 @@
         </form>
       </div>
 
+      <!-- Formulario de Anime Favorito -->
+      <div class="card">
+        <h2>Anime Favorito</h2>
+        <form @submit.prevent="submitForm2">
+          <label for="nombre2">Nombre del Anime:</label>
+          <input type="text" id="nombre2" v-model="form2.nombre" required>
 
+          <label for="mensaje2">Breve Sinopsis:</label>
+          <textarea id="mensaje2" v-model="form2.mensaje" rows="4" required></textarea>
 
-      
+          <input type="submit" value="Enviar">
+        </form>
+      </div>
+    </div>
 
+    <div class="forms-tables-container">
       <!-- Tabla para mostrar los datos enviados desde el Formulario 1 -->
       <div class="table-container">
         <h3>Datos Personales Enviados</h3>
@@ -73,20 +84,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
-      
-      <!-- Formulario de Anime Favorito -->
-      <div class="card">
-        <h2>Anime Favorito</h2>
-        <form @submit.prevent="submitForm2">
-          <label for="nombre2">Nombre del Anime:</label>
-          <input type="text" id="nombre2" v-model="form2.nombre" required>
-
-          <label for="mensaje2">Breve Sinopsis:</label>
-          <textarea id="mensaje2" v-model="form2.mensaje" rows="4" required></textarea>
-
-          <input type="submit" value="Enviar">
-        </form>
       </div>
 
       <!-- Tabla para mostrar los datos enviados desde el Formulario 2 -->
@@ -112,7 +109,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -155,17 +151,10 @@ export default {
       this.form2.mensaje = '';
     }
   },
-
 };
-
-
 </script>
 
 <style scoped>
-
-
-
-
 /* Centraliza todo el contenido en la pantalla */
 .wrapper-container {
   display: flex;
@@ -177,44 +166,31 @@ export default {
   padding: 20px;
 }
 
-/* Primera marca de agua */
-/* Contenedor principal */
-.wrapper-container {
-  position: relative; /* Asegúrate de que el contenedor tenga posición relativa */
-  padding: 20px;
-  background-color: #f0f0f0;
-}
-
-.wrapper-container::before {
-  content: '';
-  position: absolute;
-  top: 39%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1350px; /* Ajusta el tamaño según sea necesario */
-  height: 1200px; /* Ajusta el tamaño según sea necesario */
-  background-image: url('./assets/maxresdefault.jpg');
-  background-size: contain; /* Ajusta el tamaño de la imagen para que se ajuste al contenedor */
-  background-repeat: no-repeat;
-  opacity: 0.1; /* Ajusta la opacidad según el efecto deseado */
-  pointer-events: none; /* Asegura que la marca de agua no interfiera con los eventos del ratón */
-}
-
-/* Segunda marca de agua */
+/* Marcas de agua */
+.wrapper-container::before,
 .wrapper-container::after {
   content: '';
   position: absolute;
-  top: 89%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1350px; /* Ajusta según sea necesario */
-  height: 1200px; /* Ajusta según sea necesario */
-  background-image: url('./assets/frieren-frieren-3840x2160-15163.jpg');
-  background-size: cover; /* Ajusta el tamaño de la imagen para que cubra el contenedor */
+  transform: translateX(-50%);
+  width: 1350px;
+  height: 1200px;
   background-repeat: no-repeat;
-  opacity: 0.1; /* Ajusta la opacidad según el efecto deseado */
-  pointer-events: none; /* Asegura que la marca de agua no interfiera con los eventos del ratón */
-  z-index: 0; /* Asegúrate de que esté detrás del contenido */
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.wrapper-container::before {
+  top: 0%;
+  background-image: url('./assets/maxresdefault.jpg');
+  background-size: contain;
+}
+
+.wrapper-container::after {
+  top: 130%;
+  background-image: url('./assets/frieren-frieren-3840x2160-15163.jpg');
+  background-size: cover;
+  z-index: 0;
 }
 
 /* Estilos para los productos */
@@ -226,53 +202,32 @@ export default {
   margin-bottom: 40px;
 }
 
-
 #wrapper > div {
   border: dashed black 1px;
   flex-basis: 120px;
   margin: 10px;
   padding: 10px;
-  background-color: lightgreen;
+  background-color: rgb(66, 132, 218);
 }
 
-
+/* Contenedor para los formularios y tablas */
+.forms-tables-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 40px;
+}
 
 /* Estilos para los formularios */
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-}
-
-/* Responsividad para los formularios y tablas */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .card, .table-container {
-    width: 90%;
-  }
-}
-
-@media (min-width: 769px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .card, .table-container {
-    width: 70%;
-  }
-}
-
 .card {
   background-color: rgb(143, 216, 136);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  width: 100%;
 }
 
 .card h2 {
@@ -311,11 +266,11 @@ export default {
 
 /* Estilos para la tabla */
 .table-container {
-  width: 75%;
   background-color: white;
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .table-container h3 {
@@ -338,10 +293,7 @@ th, td {
 th {
   background-color: #4CAF50;
   color: white;
-
 }
-
-
 
 .image-container {
   position: relative;

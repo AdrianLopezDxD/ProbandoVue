@@ -64,7 +64,7 @@ export default {
 <style scoped>
 .container {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #f8f8f8;
   border-radius: 8px;
   width: 300px;
   text-align: center;
@@ -78,7 +78,7 @@ img {
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #4CAF50;
+  background-color: #ec4807;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -86,7 +86,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #cfa20b;
 }
 
 .producto-item {
@@ -95,7 +95,7 @@ border: dashed black 1px;
 flex-basis: 120px;
 margin: 10px;
 padding: 10px;
-background-color: lightgreen;
+background-color: rgb(91, 27, 241);
 overflow: hidden;
 }
 
